@@ -1,0 +1,34 @@
+{
+  "name": "@harness/agents",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "type": "module",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "default": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "eval": "pnpm eval:working-hours && pnpm eval:leave && pnpm eval:payroll && pnpm eval:thr",
+    "eval:working-hours": "node --env-file-if-exists=../../.env --import tsx src/evals/working-hours.ts",
+    "eval:leave": "node --env-file-if-exists=../../.env --import tsx src/evals/leave.ts",
+    "eval:payroll": "node --env-file-if-exists=../../.env --import tsx src/evals/payroll.ts",
+    "eval:thr": "node --env-file-if-exists=../../.env --import tsx src/evals/thr.ts"
+  },
+  "dependencies": {
+    "@anvia/core": "latest",
+    "@anvia/lens": "1.2.0",
+    "@anvia/openai": "latest",
+    "@harness/db": "workspace:*",
+    "@tavily/core": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "tsx": "^4.23.15",
+    "typescript": "latest"
+  }
+}

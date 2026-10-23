@@ -1,0 +1,32 @@
+{
+  "name": "@harness/web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "routes": "tsr generate",
+    "build": "pnpm routes && tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "pnpm routes && tsc --noEmit"
+  },
+  "dependencies": {
+    "@anvia/client": "^1.2.0",
+    "@anvia/react": "^1.1.3",
+    "@anvia/react-ui": "^1.1.6",
+    "@tanstack/react-router": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "latest",
+    "@tanstack/router-cli": "latest",
+    "@tanstack/router-plugin": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  }
+}

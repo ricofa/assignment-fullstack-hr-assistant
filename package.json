@@ -1,0 +1,18 @@
+{
+  "name": "harness-fullstack",
+  "private": true,
+  "packageManager": "pnpm@12.10.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @harness/db build && pnpm --filter @harness/agents build && pnpm --parallel --filter './apps/*' dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm --filter @harness/db build && pnpm --filter @harness/agents build && pnpm -r typecheck",
+    "evals:1": "pnpm --filter @harness/agents eval:working-hours",
+    "evals:2": "pnpm --filter @harness/agents eval:leave",
+    "evals:3": "pnpm --filter @harness/agents eval:payroll",
+    "evals:4": "pnpm --filter @harness/agents eval:thr",
+    "evals": "pnpm --filter @harness/agents eval"
+  }
+}

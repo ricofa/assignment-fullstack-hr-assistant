@@ -1,0 +1,26 @@
+{
+  "name": "@harness/db",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "default": "./dist/index.js"
+  },
+  "scripts": {
+    "db:generate": "NODE_OPTIONS=--conditions=import drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anvia/memory-drizzle": "latest",
+    "drizzle-orm": "latest",
+    "pg": "latest"
+  },
+  "devDependencies": {
+    "@types/pg": "latest",
+    "drizzle-kit": "latest",
+    "dotenv": "latest",
+    "typescript": "latest"
+  }
+}

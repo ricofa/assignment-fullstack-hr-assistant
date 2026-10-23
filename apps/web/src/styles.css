@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+@keyframes chat-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes chat-stream-caret {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.chat-fade-in {
+  animation: chat-fade-in 180ms ease-out both;
+}
+
+.chat-copy-label {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  z-index: 20;
+  visibility: hidden;
+  transform: translate(-50%, 3px);
+  border-radius: 6px;
+  background: #0f172a;
+  padding: 4px 8px;
+  color: white;
+  font-size: 12px;
+  line-height: 1.25;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.chat-copy-button[data-state='copied'] .chat-copy-label {
+  animation: chat-copy-label 1.4s ease-out forwards;
+}
+
+@keyframes chat-copy-label {
+  0% {
+    visibility: visible;
+    transform: translate(-50%, 3px);
+    opacity: 0;
+  }
+
+  12%, 75% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+[data-role='parts'].chat-stream-text[data-state='streaming']::after {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 3px;
+  background: currentColor;
+  content: '';
+  vertical-align: -2px;
+  animation: chat-stream-caret 900ms ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-fade-in,
+  [data-role='parts'].chat-stream-text[data-state='streaming']::after {
+    animation: none;
+  }
+}
